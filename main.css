@@ -4,6 +4,15 @@ body {
     font-family: 'Roboto Mono', monospace;
 }
 
+button {
+    font-family: 'Roboto Mono', monospace;
+    background-color: tomato;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+
 .container {
     height: 400px;
     width: 500px;
@@ -18,20 +27,91 @@ body {
 }
 
 .subContainers1 {
-    justify-self: flex-start;
     text-align: center;
-    border: 1px solid white;
 }
 
 .subContainers2 {
-    border: 1px solid white;
+    display: none;
+    position: relative;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: yellow;
+    height: 100px;
+    width: 100px;
+    z-index: 2;
 }
 
-.subContainers3 {
-    border: 1px solid white;
+/* .subContainers3 {} */
+
+.one {
+    display: none;
+    top: 40px;
+    left: 40px;
+    margin: 5px;
+    background-color: black;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    z-index: 10;
 }
 
-button {
-    justify-self: end;
-    font-family: 'Roboto Mono', monospace;
+.two {
+    display: none;
+    top: 40px;
+    left: 40px;
+    margin: 5px;
+    background-color: black;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    z-index: 10;
+}
+
+.three {
+    display: none;
+    top: 40px;
+    left: 40px;
+    margin: 5px;
+    background-color: black;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    z-index: 10;
+}
+
+.four {
+    display: none;
+    top: 40px;
+    left: 40px;
+    margin: 5px;
+    background-color: black;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    z-index: 10;
+}
+
+.five {
+    display: none;
+    top: 40px;
+    left: 40px;
+    margin: 5px;
+    background-color: black;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    z-index: 10;
+}
+
+.six {
+    display: none;
+    top: 40px;
+    left: 40px;
+    margin: 5px;
+    background-color: black;
+    height: 20px;
+    width: 20px;
+    border-radius: 50px;
+    z-index: 10;
 }
