@@ -1,3 +1,115 @@
+const title = document.querySelector("#title");
+let score = document.querySelector("#score");
+const diceBck = document.querySelector("#diceBackground");
+const button = document.querySelector("#button");
+const one = document.querySelector("#one");
+const two = document.querySelector("#two");
+const three = document.querySelector("#three");
+const four = document.querySelector("#four");
+const five = document.querySelector("#five");
+const six = document.querySelector("#six");
+
+let sum = 0;
+
+const multiple = (num) => {
+    sum += num;
+}
+
+const afterClick = (num) => {
+    if(score.textContent < 20) {
+        if(num == 1) {
+            one.style.display = "block";
+            two.style.display = "none";
+            three.style.display = "none";
+            four.style.display = "none";
+            five.style.display = "none";
+            six.style.display = "none";
+            score.textContent = sum;
+            console.log(`${sum}`);
+            score.textContent = "You Lost!";
+            button.textContent = "Start AGAIN?";
+        } else if (num == 2) {
+            one.style.display = "block";
+            two.style.display = "block";
+            three.style.display = "none";
+            four.style.display = "none";
+            five.style.display = "none";
+            six.style.display = "none";
+            multiple(num);
+            score.textContent = sum;
+            console.log(`${sum}`);
+
+        } else if (num == 3) {
+            one.style.display = "block";
+            two.style.display = "block";
+            three.style.display = "block";
+            four.style.display = "none";
+            five.style.display = "none";
+            six.style.display = "none";
+            multiple(num);
+            score.textContent = sum;
+            console.log(`${sum}`);
+
+        } else if (num == 4) {
+            one.style.display = "block";
+            two.style.display = "block";
+            three.style.display = "block";
+            four.style.display = "block";
+            five.style.display = "none";
+            six.style.display = "none";
+            multiple(num);
+            score.textContent = sum;
+            console.log(`${sum}`);
+
+        } else if (num == 5) {
+            one.style.display = "block";
+            two.style.display = "block";
+            three.style.display = "block";
+            four.style.display = "block";
+            five.style.display = "block";
+            six.style.display = "none";
+            multiple(num);
+            score.textContent = sum;
+            console.log(`${sum}`);
+
+        } else if (num == 6) {
+            one.style.display = "block";
+            two.style.display = "block";
+            three.style.display = "block";
+            four.style.display = "block";
+            five.style.display = "block";
+            six.style.display = "block";
+            multiple(num);
+            score.textContent = sum;
+            console.log(`${sum}`);
+        }
+        if (score.textContent >= 20) {
+            score.textContent = "You Win!";
+            button.textContent = "Start AGAIN?";
+        }}};
+
+    button.addEventListener("click", () => {
+        if(button.textContent === "Roll") {
+        diceBck.style.display = "flex";
+        let randomNum = parseInt(Math.random() * 6) + 1;
+        afterClick(randomNum);
+        } else {
+            resetGame();
+        }
+    });
+    
+
+    const resetGame = () => {
+        if (button.textContent === "Start AGAIN?") {
+            button.textContent = "Roll";
+            score.textContent = 0;
+            sum = 0;
+            diceBck.style.display = "none";
+        }};
+
+
+
+
 /* Dice Game
 
 Get a random number between 1 to 6 for dice and add the numbers each other create a sum
@@ -35,87 +147,3 @@ Get a random number between 1 to 6 for dice and add the numbers each other creat
         change .six display = "block";
 
 */
-
-const title = document.querySelector("#title");
-const score = document.querySelector("#score").value;
-const diceBck = document.querySelector("#diceBackground");
-const button = document.querySelector("#button");
-const one = document.querySelector("#one").value;
-const two = document.querySelector("#two").value;
-const three = document.querySelector("#three").value;
-const four = document.querySelector("#four").value;
-const five = document.querySelector("#five").value;
-const six = document.querySelector("#six").value;
-
-let sum = 0;
-
-let randomNum = parseInt(Math.random() * 6) + 1;
-console.log(randomNum);
-
-console.log(one)
-console.log(two)
-
-const multiple = (num) => {
-    sum = sum + randomNum;
-    console.log(sum);
-}
-
-multiple(sum);
-
-button.addEventListener("click", () => {
-    diceBck.style.display = "flex";
-    do {
-            if(randomNum == one) {
-                one.style.display = "block";
-                multiple(randomNum);
-                score.textContent = `${sum}`;
-                console.log(`${sum}`);
-
-            } else if (randomNum == two) {
-                one.style.display = "block";
-                two.style.display = "block";
-                multiple(randomNum);
-                score.textContent = `${sum}`;
-                console.log(`${sum}`);
-
-            } else if (randomNum == three) {
-                one.style.display = "block";
-                two.style.display = "block";
-                three.style.display = "block";
-                multiple(randomNum);
-                score.textContent = `${sum}`;
-                console.log(`${sum}`);
-
-            } else if (randomNum == four) {
-                one.style.display = "block";
-                two.style.display = "block";
-                three.style.display = "block";
-                four.style.display = "block";
-                multiple(randomNum);
-                score.textContent = `${sum}`;
-                console.log(`${sum}`);
-
-            } else if (randomNum == five) {
-                one.style.display = "block";
-                two.style.display = "block";
-                three.style.display = "block";
-                four.style.display = "block";
-                five.style.display = "block";
-                multiple(randomNum);
-                score.textContent = `${sum}`;
-                console.log(`${sum}`);
-
-            } else if (randomNum == six) {
-                one.style.display = "block";
-                two.style.display = "block";
-                three.style.display = "block";
-                four.style.display = "block";
-                five.style.display = "block";
-                six.style.display = "block";
-                multiple(randomNum);
-                score.textContent = `${sum}`;
-                console.log(`${sum}`);
-        } 
-        
-} while (sum <= 20);
-});
