@@ -2,112 +2,59 @@ const title = document.querySelector("#title");
 let score = document.querySelector("#score");
 const diceBck = document.querySelector("#diceBackground");
 const button = document.querySelector("#button");
-const one = document.querySelector("#one");
-const two = document.querySelector("#two");
-const three = document.querySelector("#three");
-const four = document.querySelector("#four");
-const five = document.querySelector("#five");
-const six = document.querySelector("#six");
+const dots = document.querySelectorAll(".dot");
 
 let sum = 0;
 
-const multiple = (num) => {
-    sum += num;
+//This function for styling of Dice
+const diceDots = (num) => {
+// first disable all dots from the dice
+    for(let dot of dots) {
+        dot.style.display = "none";
+    }
+//if dice 1, the game is over if not just continue to add numbers to the sum
+    if(num === 1){
+        score.textContent = "You Lost!";
+        button.textContent = "Start AGAIN?";
+    } else {
+        sum += num;
+        score.textContent = sum;
+    }
+//this loop for enable dot classes for the dice dots depends on the rolled number 
+    for(let i = 0; i <= num - 1 ; i++) {
+        dots[i].style.display = "block";
+    }
 }
 
 const afterClick = (num) => {
     if(score.textContent < 20) {
-        if(num == 1) {
-            one.style.display = "block";
-            two.style.display = "none";
-            three.style.display = "none";
-            four.style.display = "none";
-            five.style.display = "none";
-            six.style.display = "none";
-            score.textContent = sum;
-            console.log(`${sum}`);
-            score.textContent = "You Lost!";
-            button.textContent = "Start AGAIN?";
-        } else if (num == 2) {
-            one.style.display = "block";
-            two.style.display = "block";
-            three.style.display = "none";
-            four.style.display = "none";
-            five.style.display = "none";
-            six.style.display = "none";
-            multiple(num);
-            score.textContent = sum;
-            console.log(`${sum}`);
+        diceDots(num);
+    }
 
-        } else if (num == 3) {
-            one.style.display = "block";
-            two.style.display = "block";
-            three.style.display = "block";
-            four.style.display = "none";
-            five.style.display = "none";
-            six.style.display = "none";
-            multiple(num);
-            score.textContent = sum;
-            console.log(`${sum}`);
+    if (score.textContent >= 20) {
+        score.textContent = "You Win!";
+        button.textContent = "Start AGAIN?";
+    }
+};
 
-        } else if (num == 4) {
-            one.style.display = "block";
-            two.style.display = "block";
-            three.style.display = "block";
-            four.style.display = "block";
-            five.style.display = "none";
-            six.style.display = "none";
-            multiple(num);
-            score.textContent = sum;
-            console.log(`${sum}`);
-
-        } else if (num == 5) {
-            one.style.display = "block";
-            two.style.display = "block";
-            three.style.display = "block";
-            four.style.display = "block";
-            five.style.display = "block";
-            six.style.display = "none";
-            multiple(num);
-            score.textContent = sum;
-            console.log(`${sum}`);
-
-        } else if (num == 6) {
-            one.style.display = "block";
-            two.style.display = "block";
-            three.style.display = "block";
-            four.style.display = "block";
-            five.style.display = "block";
-            six.style.display = "block";
-            multiple(num);
-            score.textContent = sum;
-            console.log(`${sum}`);
-        }
-        if (score.textContent >= 20) {
-            score.textContent = "You Win!";
-            button.textContent = "Start AGAIN?";
-        }}};
-
-    button.addEventListener("click", () => {
-        if(button.textContent === "Roll") {
+button.addEventListener("click", () => {
+    if(button.textContent === "Roll") {
         diceBck.style.display = "flex";
-        let randomNum = parseInt(Math.random() * 6) + 1;
+        const randomNum = parseInt(Math.random() * 6) + 1;
         afterClick(randomNum);
-        } else {
-            resetGame();
-        }
-    });
-    
+    } else {
+        resetGame();
+    }
+});
 
-    const resetGame = () => {
-        if (button.textContent === "Start AGAIN?") {
-            button.textContent = "Roll";
-            score.textContent = 0;
-            sum = 0;
-            diceBck.style.display = "none";
-        }};
-
-
+const resetGame = () => {
+    if (button.textContent === "Start AGAIN?") {
+        button.textContent = "Roll";
+        score.textContent = 0;
+        sum = 0;
+        diceBck.style.display = "none";
+    }
+};
 
 
 /* Dice Game
